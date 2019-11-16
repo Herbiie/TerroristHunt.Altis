@@ -1,10 +1,10 @@
 // Description
 
 // Settings
-OnLoadName  = "Terrorist Hunt";
+OnLoadName  = "TFM: Terrorist Hunt";
 OnLoadMission = "Did you know that according to Statista, more households in the UK have ferrets than mice?";
 author = "The Ferret Master";
-briefingName = "Co20: Terrorist Hunt";
+briefingName = "Co20: TFM: Terrorist Hunt";
 overviewText = "Dynamic CQB mission. Clear a building - simple!";
 disabledAI = 1;
 respawn = 3;
