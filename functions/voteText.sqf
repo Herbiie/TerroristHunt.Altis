@@ -1,4 +1,4 @@
-titleText ["","BLACK",0];
+titleText ["", "BLACK FADED", 0.4];
 sleep 1;
 waitUntil {player getVariable "H_respawned"};
 sleep 1;
@@ -19,12 +19,10 @@ while {true} do {
 			};
 		} forEach H_markers;
 		_closest setMarkerColorlocal "ColorGreen";
-		_closest setMarkerTextlocal "Selected";
 		_closest setMarkerAlphalocal 1;
 		{
 			if (_x != _closest) then {
 				_x setMarkerAlphalocal 0.5;
-				_x setMarkerTextlocal "";
 				_x setMarkerColorlocal "ColorRED";
 			};
 		} forEach H_markers;

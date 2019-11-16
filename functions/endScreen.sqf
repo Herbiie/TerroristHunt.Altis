@@ -56,7 +56,7 @@ if (!isDedicated) then {
 	player setVariable ["H_respawned",false,true];
 	[format ["%1 <br/>Shots fired: %2 <br/>Shots per kill: %3 <br/>Total Mission Time: %4<br/> Mission Time from First Shot: %5<br/> %6",_winText,_shots,_shotsPerKill,_totalTime,_shotsTime,_playerText],-1,SafeZoneY+(safeZoneH/10),settings_votetime - 2,1] spawn BIS_fnc_dynamicText;
 
-	sleep settings_votetime;
+	sleep settings_votetime/2;
 
 	_camera cameraEffect ["terminate","back"];
 };

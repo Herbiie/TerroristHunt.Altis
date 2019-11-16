@@ -1,5 +1,4 @@
 player setCaptive true;
-player hideObjectGlobal true;
 removeAllItems player;
 removeAllWeapons player;
 removeBackpack player;
