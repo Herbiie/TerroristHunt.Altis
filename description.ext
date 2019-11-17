@@ -9,6 +9,7 @@ overviewText = "Dynamic CQB mission. Clear a building - simple!";
 overviewPicture = "images\TerroristHuntLogo.jpg";
 loadScreen = "images\TerroristHuntLogo.jpg";
 disabledAI = 1;
+saving = 0;
 respawn = 3;
 respawnDelay = 2;
 respawnOnStart = 1;
