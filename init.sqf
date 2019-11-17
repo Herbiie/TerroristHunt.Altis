@@ -62,7 +62,8 @@ if (isServer) then {
 		private _marker = createMarker [format ["Marker%1",_forEachIndex],position _x];
 		_marker setMarkerType "mil_dot";
 		_marker setMarkerColor "ColorRED";
-		_marker setMarkerText str (_forEachIndex + 1);
+		private _buildingName = getText (configfile >> "CfgVehicles" >> typeOf _x >> "displayName");
+		_marker setMarkerText format ["%1 - %2",(_forEachIndex + 1),_buildingName];
 		H_markers pushBack _marker;
 	} forEach H_availableBuildings;
 	publicVariable "H_markers";
@@ -73,5 +74,6 @@ if (isServer) then {
 
 player setVariable ["H_playerName",profileName,true];
 player setVariable ["H_respawned",false,true];
+player setVariable ["H_hasVoted",false,true];
 [] spawn H_fnc_enemyCount;
 [] spawn H_fnc_voteText;

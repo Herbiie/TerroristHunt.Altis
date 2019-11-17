@@ -1,4 +1,3 @@
-player setCaptive true;
 removeAllItems player;
 removeAllWeapons player;
 removeBackpack player;

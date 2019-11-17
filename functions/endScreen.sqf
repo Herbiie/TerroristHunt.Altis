@@ -12,7 +12,9 @@ if (!isDedicated) then {
 		_winText = "Mission Success.";
 	} else {
 		_winText = "Mission Failed.";
-		_shotsPerKill = _shots/(_number-({side _x == east} count allUnits));
+		if (_number > 0) then {
+			_shotsPerKill = _shots/(_number-({side _x == east} count allUnits));
+		};
 	};
 
 	private _playerData = [];
@@ -41,8 +43,10 @@ if (!isDedicated) then {
 
 	private _campos = [((getpos _building) # 0) + 50,((getpos _building) # 1) + 50,((getpos _building) # 2) + 50];
 
-	forceRespawn player;
-	waitUntil {player getVariable "H_respawned"};
+	if (player distance getMarkerPos "respawn_west" > 50) then {
+		forceRespawn player;
+		waitUntil {player getVariable "H_respawned"};
+	};
 	sleep 1;
 	["Terminate"] call BIS_fnc_EGSpectator;
 	private _camera = "camera" camcreate _campos;

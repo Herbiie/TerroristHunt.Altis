@@ -18,6 +18,7 @@ while {_a < _number} do {
 	private _thisPos = selectRandom _buildingPositions;
 	_buildingPositions deleteat (_buildingPositions find _thisPos);
 	private _unit = _group createUnit [selectRandom settings_units,_thisPos,[],0,"NONE"];
+	_unit setVehiclePosition [_thisPos, [], 0, "CAN_COLLIDE"];
 	[_unit] join _group;
 	_unit disableai "PATH";
 	_unit addMPEventHandler ["MPkilled", {

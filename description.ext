@@ -4,7 +4,7 @@
 OnLoadName  = "TFM: Terrorist Hunt";
 OnLoadMission = "Did you know that according to Statista, more households in the UK have ferrets than mice?";
 author = "The Ferret Master";
-briefingName = "Co20: TFM: Terrorist Hunt";
+briefingName = "Co10: TFM: Terrorist Hunt";
 overviewText = "Dynamic CQB mission. Clear a building - simple!";
 overviewPicture = "images\TerroristHuntLogo.jpg";
 loadScreen = "images\TerroristHuntLogo.jpg";
@@ -14,6 +14,12 @@ respawnDelay = 2;
 respawnOnStart = 1;
 respawnTemplates[] = {};
 enableDebugConsole	= 1;
+class Header
+{
+	gameType =  COOP;
+	minPlayers =  1;
+	maxPlayers = 10;
+};
 
 class CfgNotifications
 {
@@ -45,7 +51,7 @@ class NUMBERENEMY {
 			x = (safezoneX+(safeZoneW*0.5))-(safeZoneW/16);
 			y = (safezoneY+(safezoneH*0.5))-(safeZoneH/8);
 			w = safeZoneW/8;
-			h = safeZoneH/4;
+			h = safeZoneH/6;
 		};
 		class Rscback_1702: RscBack
 		{
@@ -53,7 +59,7 @@ class NUMBERENEMY {
 			x = (safezoneX+(safeZoneW*0.5))-(safeZoneW/16);
 			y = (safezoneY+(safezoneH*0.5))-(safeZoneH/8);
 			w = safeZoneW/8;
-			h = safeZoneH/4;
+			h = safeZoneH/6;
 		};
 		class RscText_1703: RscText
 		{
@@ -72,7 +78,7 @@ class NUMBERENEMY {
 			w = safeZoneW/8;
 			h = safeZoneH/24;
 			text = "5";
-			action = "closeDialog 0; missionNameSpace setVariable ['H_5nme',(missionNameSpace getVariable 'H_5nme') + 1,true]";
+			action = "closeDialog 0; missionNameSpace setVariable ['H_5nme',(missionNameSpace getVariable 'H_5nme') + 1,true]; player setVariable ['H_hasVoted',true,true]";
 		};
 		class RscButton_1603: RscButton
 		{
@@ -82,7 +88,7 @@ class NUMBERENEMY {
 			w = safeZoneW/8;
 			h = safeZoneH/24;
 			text = "10";
-			action = "closeDialog 0; missionNameSpace setVariable ['H_10nme',(missionNameSpace getVariable 'H_10nme') + 1,true]";
+			action = "closeDialog 0; missionNameSpace setVariable ['H_10nme',(missionNameSpace getVariable 'H_10nme') + 1,true]; player setVariable ['H_hasVoted',true,true]";
 		};
 		class RscButton_1604: RscButton
 		{
@@ -92,29 +98,8 @@ class NUMBERENEMY {
 			w = safeZoneW/8;
 			h = safeZoneH/24;
 			text = "15";
-			action = "closeDialog 0;  missionNameSpace setVariable ['H_15nme',(missionNameSpace getVariable 'H_15nme') + 1,true]";
-		};
-		class RscButton_1605: RscButton
-		{
-			idc = 1605;
-			x = (safezoneX+(safeZoneW*0.5))-(safeZoneW/16);
-			y = ((safezoneY+(safezoneH*0.5))-(safeZoneH/8))+(safeZoneH/24)*4;
-			w = safeZoneW/8;
-			h = safeZoneH/24;
-			text = "20";
-			action = "closeDialog 0;  missionNameSpace setVariable ['H_20nme',(missionNameSpace getVariable 'H_20nme') + 1,true]";
-		};
-		class RscButton_1606: RscButton
-		{
-			idc = 1606;
-			x = (safezoneX+(safeZoneW*0.5))-(safeZoneW/16);
-			y = ((safezoneY+(safezoneH*0.5))-(safeZoneH/8))+(safeZoneH/24)*5;
-			w = safeZoneW/8;
-			h = safeZoneH/24;
-			text = "25";
-			action = "closeDialog 0;  missionNameSpace setVariable ['H_25nme',(missionNameSpace getVariable 'H_25nme') + 1,true]";
-		};
-		
+			action = "closeDialog 0;  missionNameSpace setVariable ['H_15nme',(missionNameSpace getVariable 'H_15nme') + 1,true]; player setVariable ['H_hasVoted',true,true]";
+		};		
 	};
 };
 
@@ -157,7 +142,7 @@ class STARTLOC {
 			w = safeZoneW/8;
 			h = safeZoneH/24;
 			text = "Start Location 1";
-			action = "closeDialog 0;  missionNameSpace setVariable ['H_pos1votes',(missionNameSpace getVariable 'H_pos1votes') + 1,true]";
+			action = "closeDialog 0;  missionNameSpace setVariable ['H_pos1votes',(missionNameSpace getVariable 'H_pos1votes') + 1,true]; player setVariable ['H_hasVoted',true,true]";
 		};
 		class RscButton_1602: RscButton
 		{
@@ -167,7 +152,7 @@ class STARTLOC {
 			w = safeZoneW/8;
 			h = safeZoneH/24;
 			text = "Start Location 2";
-			action = "closeDialog 0; missionNameSpace setVariable ['H_pos2votes',(missionNameSpace getVariable 'H_pos2votes') + 1,true]";
+			action = "closeDialog 0; missionNameSpace setVariable ['H_pos2votes',(missionNameSpace getVariable 'H_pos2votes') + 1,true]; player setVariable ['H_hasVoted',true,true]";
 		};
 		class RscButton_1603: RscButton
 		{
@@ -177,7 +162,7 @@ class STARTLOC {
 			w = safeZoneW/8;
 			h = safeZoneH/24;
 			text = "Start Location 3";
-			action = "closeDialog 0; missionNameSpace setVariable ['H_pos3votes',(missionNameSpace getVariable 'H_pos3votes') + 1,true]";
+			action = "closeDialog 0; missionNameSpace setVariable ['H_pos3votes',(missionNameSpace getVariable 'H_pos3votes') + 1,true]; player setVariable ['H_hasVoted',true,true]";
 		};
 		
 	};
@@ -222,7 +207,7 @@ class TIMEOFDAY {
 			w = safeZoneW/8;
 			h = safeZoneH/24;
 			text = "Dawn";
-			action = "closeDialog 0; missionNameSpace setVariable ['H_dawnVotes',(missionNameSpace getVariable 'H_dawnVotes')+1,true];";
+			action = "closeDialog 0; missionNameSpace setVariable ['H_dawnVotes',(missionNameSpace getVariable 'H_dawnVotes')+1,true]; player setVariable ['H_hasVoted',true,true]";
 		};
 		class RscButton_1603: RscButton
 		{
@@ -232,7 +217,7 @@ class TIMEOFDAY {
 			w = safeZoneW/8;
 			h = safeZoneH/24;
 			text = "Morning";
-			action = "closeDialog 0; missionNameSpace setVariable ['H_morningVotes',(missionNameSpace getVariable 'H_morningVotes')+1,true];";
+			action = "closeDialog 0; missionNameSpace setVariable ['H_morningVotes',(missionNameSpace getVariable 'H_morningVotes')+1,true]; player setVariable ['H_hasVoted',true,true]";
 		};
 		class RscButton_1604: RscButton
 		{
@@ -242,7 +227,7 @@ class TIMEOFDAY {
 			w = safeZoneW/8;
 			h = safeZoneH/24;
 			text = "Afternoon";
-			action = "closeDialog 0; missionNameSpace setVariable ['H_afternoonVotes',(missionNameSpace getVariable 'H_afternoonVotes')+1,true];";
+			action = "closeDialog 0; missionNameSpace setVariable ['H_afternoonVotes',(missionNameSpace getVariable 'H_afternoonVotes')+1,true]; player setVariable ['H_hasVoted',true,true];";
 		};
 		class RscButton_1605: RscButton
 		{
@@ -252,7 +237,7 @@ class TIMEOFDAY {
 			w = safeZoneW/8;
 			h = safeZoneH/24;
 			text = "Dusk";
-			action = "closeDialog 0; missionNameSpace setVariable ['H_duskVotes',(missionNameSpace getVariable 'H_duskVotes')+1,true];";
+			action = "closeDialog 0; missionNameSpace setVariable ['H_duskVotes',(missionNameSpace getVariable 'H_duskVotes')+1,true]; player setVariable ['H_hasVoted',true,true];";
 		};
 		class RscButton_1606: RscButton
 		{
@@ -262,7 +247,7 @@ class TIMEOFDAY {
 			w = safeZoneW/8;
 			h = safeZoneH/24;
 			text = "Night";
-			action = "closeDialog 0; missionNameSpace setVariable ['H_nightVotes',(missionNameSpace getVariable 'H_nightVotes')+1,true];";
+			action = "closeDialog 0; missionNameSpace setVariable ['H_nightVotes',(missionNameSpace getVariable 'H_nightVotes')+1,true]; player setVariable ['H_hasVoted',true,true];";
 		};
 		
 	};

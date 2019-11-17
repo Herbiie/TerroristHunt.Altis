@@ -1,10 +1,10 @@
 params ["_building"];
-private _campos = [((getpos _building) # 0) + 350,((getpos _building) # 1) + 350,((getpos _building) # 2) + 300];
+private _campos = [((getpos _building) # 0) + 150,((getpos _building) # 1) + 150,((getpos _building) # 2) + 300];
 private _camera = "camera" camcreate _campos;
 _camera cameraeffect ["internal", "back"];
 cameraEffectEnableHUD true;
 _camera camPrepareTarget _building;
-_camera camPrepareFOV 1;
+_camera camPrepareFOV 0.5;
 _camera camPreparePos _campos;
 _camera camCommitPrepared 0;
 addMissionEventHandler ["Draw3D", {
@@ -31,7 +31,6 @@ addMissionEventHandler ["Draw3D", {
 waitUntil {(missionNameSpace getVariable "vote5")};
 sleep 2;
 _camera camPreparePos (position player);
-_camera camPrepareTarget player;
 _camera camCommitPrepared 5;
 waitUntil {camCommitted _camera};
 removeAllMissionEventHandlers "Draw3D";

@@ -6,8 +6,8 @@ settings_units = ["I_L_Criminal_SG_F","I_L_Criminal_SMG_F","I_L_Hunter_F","I_L_L
 // How long votes should last for, in seconds.
 settings_votetime = 30;
 
-// Minimum number of building positions required to be an available building (25 minimum recommended - don't have more AI than building positions!)
-settings_buildingThreshold = 25;
+// Minimum number of building positions required to be an available building (15 minimum recommended - don't have more AI than building positions!)
+settings_buildingThreshold = 15;
 
 // Arsenal Settings. True allows all weapons/magazines/items/backpacks, or an array of strings can allow only certain objects.
 /*

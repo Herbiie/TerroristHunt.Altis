@@ -7,8 +7,10 @@ player setVariable ["H_respawned",false,true];
 titleFadeOut 1;
 while {true} do {
 	waitUntil {(missionNameSpace getVariable "vote1")};
+	player setVariable ["H_hasVoted",false,true];
 	addMissionEventHandler ["MapSingleClick", {
 		params ["_units", "_pos", "_alt", "_shift"];
+		player setVariable ["H_hasVoted",true,true];
 		private _distance = worldSize;
 		private _closest = "";
 		{
@@ -29,7 +31,7 @@ while {true} do {
 		player setvariable ["H_playerVoteChoice",_closest,true];
 	}];
 	openMap true;
-	while {(missionNameSpace getVariable "vote1")} do {
+	while {(missionNameSpace getVariable "vote1") || ({!(_x getVariable "H_hasVoted")} count allPlayers) == 0} do {
 		private _time = round (settings_votetime - (Diag_tickTime - (missionNameSpace getVariable "H_voteStart")));
 		[format ["<t shadow='2'>%1 seconds remaining, vote now!</t>", _time],-1,safezoneY + safezoneH - 0.3,0.5,0] spawn BIS_fnc_dynamicText;
 		sleep 0.5;
@@ -38,7 +40,7 @@ while {true} do {
 
 
 	waitUntil {(missionNameSpace getVariable "vote2")};
-	while {(missionNameSpace getVariable "vote2")} do {
+	while {(missionNameSpace getVariable "vote2") || ({!(_x getVariable "H_hasVoted")} count allPlayers) == 0} do {
 		private _time = round (settings_votetime - (Diag_tickTime - (missionNameSpace getVariable "H_voteStart")));
 		[format ["<t shadow='2'>%1 seconds remaining, vote now!</t>", _time],-1,safezoneY + safezoneH - 0.3,0.5,0] spawn BIS_fnc_dynamicText;
 		sleep 0.5;
@@ -49,7 +51,7 @@ while {true} do {
 		sleep 0.5;
 	};
 
-	while {(missionNameSpace getVariable "vote3")} do {
+	while {(missionNameSpace getVariable "vote3") || ({!(_x getVariable "H_hasVoted")} count allPlayers) == 0} do {
 		private _time = round (30 - (Diag_tickTime - (missionNameSpace getVariable "H_voteStart")));
 		[format ["<t shadow='2'>%1 seconds remaining, vote now!</t>", _time],-1,safezoneY + safezoneH - 0.3,0.5,0] spawn BIS_fnc_dynamicText;
 		sleep 0.5;
@@ -57,13 +59,13 @@ while {true} do {
 
 	waitUntil {(missionNameSpace getVariable "vote4")};
 
-	while {(missionNameSpace getVariable "vote4")} do {
+	while {(missionNameSpace getVariable "vote4") || ({!(_x getVariable "H_hasVoted")} count allPlayers) == 0} do {
 		private _time = round (30 - (Diag_tickTime - (missionNameSpace getVariable "H_voteStart")));
 		[format ["<t shadow='2'>%1 seconds remaining, vote now!</t>", _time],-1,safezoneY + safezoneH - 0.3,0.5,0] spawn BIS_fnc_dynamicText;
 		sleep 0.5;
 	};
 
-	waitUntil {(missionNameSpace getVariable "vote5")};
+	waitUntil {(missionNameSpace getVariable "vote5") || ({!(_x getVariable "H_hasVoted")} count allPlayers) == 0};
 
 	while {(missionNameSpace getVariable "vote5")} do {
 		private _text = "<t shadow='2' size='0.5'>Ready Players:<br/>";
@@ -81,6 +83,7 @@ while {true} do {
 		[_text,safeZoneX+safeZoneW/1.5,safezoneY+(safeZoneH/9.09055),0.5,0] spawn BIS_fnc_dynamicText;
 		sleep 0.5;
 	};
+	player setVariable ["H_hasVoted",false,true];
 	private _a = 5;
 	while {!(missionNameSpace getVariable "H_start")} do {
 		[format ["<t shadow='2' size='2'>Mission starting in %1</t>",_a],-1,-1,1,0] spawn BIS_fnc_dynamicText;
