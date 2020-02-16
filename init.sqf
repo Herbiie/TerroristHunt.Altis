@@ -75,5 +75,13 @@ if (isServer) then {
 player setVariable ["H_playerName",profileName,true];
 player setVariable ["H_respawned",false,true];
 player setVariable ["H_hasVoted",false,true];
+sleep 0.01;
+titleText ["", "BLACK FADED", 0.4];
+sleep 1;
+waitUntil {player getVariable "H_respawned"};
+sleep 1;
+["Terminate"] call BIS_fnc_EGSpectator;
+player setVariable ["H_respawned",false,true];
+titleFadeOut 1;
 [] spawn H_fnc_enemyCount;
 [] spawn H_fnc_voteText;

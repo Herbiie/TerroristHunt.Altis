@@ -1,4 +1,3 @@
-
 waitUntil {missionNameSpace getVariable "H_start"};
 while {missionNameSpace getVariable "H_start"} do {
 	private _enemy = {side _x == east} count allUnits;

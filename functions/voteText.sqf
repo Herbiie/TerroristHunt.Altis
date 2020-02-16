@@ -1,10 +1,3 @@
-titleText ["", "BLACK FADED", 0.4];
-sleep 1;
-waitUntil {player getVariable "H_respawned"};
-sleep 1;
-["Terminate"] call BIS_fnc_EGSpectator;
-player setVariable ["H_respawned",false,true];
-titleFadeOut 1;
 while {true} do {
 	waitUntil {(missionNameSpace getVariable "vote1")};
 	player setVariable ["H_hasVoted",false,true];

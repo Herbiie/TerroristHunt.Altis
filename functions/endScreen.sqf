@@ -63,6 +63,7 @@ if (!isDedicated) then {
 	sleep settings_votetime/2;
 
 	_camera cameraEffect ["terminate","back"];
+	camDestroy _camera;
 };
 if (isServer) then {
 	[] spawn H_fnc_setUpMission;
